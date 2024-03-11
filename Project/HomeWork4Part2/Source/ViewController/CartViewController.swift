@@ -49,10 +49,28 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func discountSegmentAction(_ segmentControl: UISegmentedControl) {
+       
+        let selectedIndex =
+        segmentControl.selectedSegmentIndex
+        
+       
+        switch selectedIndex {
+            case 0:
+                discount = Discount.none
+            case 1:
+                discount = Discount.regular
+            case 2:
+                discount = Discount.vip
+            default:
+                break
+        }
+        
+        
         showChanges()
     }
-    
-    // MARK: - Private
+
+
+// MARK: - Private
     private func loadData() {
         let responseFromServer = ResponseFromServer()
         let serverProducts = responseFromServer.sourceProducts
